@@ -1,0 +1,26 @@
+﻿<Window x:Class="MVVM_WPF_Task1.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_WPF_Task1.Views" xmlns:ViewModels="clr-namespace:MVVM_WPF_Task1.ViewModels"
+        mc:Ignorable="d"
+        Title="MainView" Height="490" Width="380">
+    <Window.DataContext>
+        <ViewModels:MainViewModel></ViewModels:MainViewModel>
+    </Window.DataContext>
+    
+    <StackPanel Width="350">
+        <ComboBox Name="cbCars" SelectedItem="{Binding Car, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Vendor" ItemsSource="{Binding Cars}"  FontSize="28" SelectedIndex="0"></ComboBox>
+        
+        <Label FontSize="32" FontWeight="Bold">Vendor</Label>
+        <TextBlock FontSize="30" Text="{Binding Car.Vendor}"></TextBlock>
+        <Label FontSize="32" FontWeight="Bold">Model</Label>
+        <TextBlock FontSize="30" Text="{Binding Car.Model}"></TextBlock>
+        <Label FontSize="32" FontWeight="Bold">Year</Label>
+        <TextBlock FontSize="30" Text="{Binding Car.Year}"></TextBlock>
+
+        <Button Command="{Binding ShowCommand}" FontSize="32" Margin="10">Show</Button>
+        <Button Command="{Binding EditCommand}" FontSize="32" Margin="10">Edit</Button>  
+    </StackPanel>
+</Window>
